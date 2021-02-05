@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-public class ProImport : MonoBehaviour, IInPdfToProImportReceiver, IInRawAnswerToProImportReceiver, IProImportToPythonPdfConverterSender, IProImportToProReceiverSender
+public class ProImport : MonoBehaviour, IInPdfToProImportReceiver, IInRawAnswerToProImportReceiver, IProImportToPythonPdfConverterSender
 {
     void Start()
     {
@@ -32,10 +32,5 @@ public class ProImport : MonoBehaviour, IInPdfToProImportReceiver, IInRawAnswerT
     public void AddPpiReceiver(Action<PythonPdfInf> action)
     {
         ppiAction += action;
-    }
-    Action<ProInf> piAction;
-    public void AddPiReceiver(Action<ProInf> action)
-    {
-        piAction += action;
     }
 }

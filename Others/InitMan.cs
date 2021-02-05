@@ -18,9 +18,6 @@ public class InitMan : Editor
         GameObject inRawAnswer = new GameObject();
         inRawAnswer.name = "InRawAnswer Instance";
         main.inRawAnswer = inRawAnswer.AddComponent<InRawAnswer>();
-        GameObject proImport = new GameObject();
-        proImport.name = "ProImport Instance";
-        main.proImport = proImport.AddComponent<ProImport>();
         GameObject pythonPdfConverter = new GameObject();
         pythonPdfConverter.name = "PythonPdfConverter Instance";
         main.pythonPdfConverter = pythonPdfConverter.AddComponent<PythonPdfConverter>();
@@ -54,6 +51,18 @@ public class InitMan : Editor
         GameObject pythonPptExporter = new GameObject();
         pythonPptExporter.name = "PythonPptExporter Instance";
         main.pythonPptExporter = pythonPptExporter.AddComponent<PythonPptExporter>();
+        GameObject proImport = new GameObject();
+        proImport.name = "ProImport Instance";
+        main.proImport = proImport.AddComponent<ProImport>();
+        GameObject proSend = new GameObject();
+        proSend.name = "ProSend Instance";
+        main.proSend = proSend.AddComponent<ProSend>();
+        GameObject proDisplay = new GameObject();
+        proDisplay.name = "ProDisplay Instance";
+        main.proDisplay = proDisplay.AddComponent<ProDisplay>();
+        GameObject outDisplay = new GameObject();
+        outDisplay.name = "OutDisplay Instance";
+        main.outDisplay = outDisplay.AddComponent<OutDisplay>();
     }
 }
 #endif

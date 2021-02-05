@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class InPdf : MonoBehaviour, IInPdfToProImportSender
 {
     public Text debug;
+
     void Start()
     {
         FileDragAndDrop.AddListener(OnPdf);

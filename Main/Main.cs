@@ -4,12 +4,8 @@ using System;
 using UnityEngine;
 public class Main : MonoBehaviour
 {
-    public InPdf inPdf;
-    public ProImport proImport;
-    public InRawAnswer inRawAnswer;
-    public PythonPdfConverter pythonPdfConverter;
-    public ProReceiver proReceiver;
     public InPos inPos;
+    public ProReceiver proReceiver;
     public InRegion inRegion;
     public InView inView;
     public OutView outView;
@@ -18,20 +14,15 @@ public class Main : MonoBehaviour
     public OutImage outImage;
     public ProExport proExport;
     public PythonPptExporter pythonPptExporter;
+    public InPdf inPdf;
+    public ProImport proImport;
+    public InRawAnswer inRawAnswer;
+    public PythonPdfConverter pythonPdfConverter;
+    public ProSend proSend;
+    public ProDisplay proDisplay;
+    public OutDisplay outDisplay;
     void Start()
     {
-        IInPdfToProImportSender inPdfToProImportSender = inPdf;
-        IInPdfToProImportReceiver inPdfToProImportReceiver = proImport;
-        inPdfToProImportSender.AddPdfReceiver(inPdfToProImportReceiver.GetPdfReceiver());
-        IInRawAnswerToProImportSender inRawAnswerToProImportSender = inRawAnswer;
-        IInRawAnswerToProImportReceiver inRawAnswerToProImportReceiver = proImport;
-        inRawAnswerToProImportSender.AddRawAnswerReceiver(inRawAnswerToProImportReceiver.GetRawAnswerReceiver());
-        IProImportToPythonPdfConverterSender proImportToPythonPdfConverterSender = proImport;
-        IProImportToPythonPdfConverterReceiver proImportToPythonPdfConverterReceiver = pythonPdfConverter;
-        proImportToPythonPdfConverterSender.AddPpiReceiver(proImportToPythonPdfConverterReceiver.GetPpiReceiver());
-        IProImportToProReceiverSender proImportToProReceiverSender = proImport;
-        IProImportToProReceiverReceiver proImportToProReceiverReceiver = proReceiver;
-        proImportToProReceiverSender.AddPiReceiver(proImportToProReceiverReceiver.GetPiReceiver());
         IInPosToProReceiverSender inPosToProReceiverSender = inPos;
         IInPosToProReceiverReceiver inPosToProReceiverReceiver = proReceiver;
         inPosToProReceiverSender.AddIpiReceiver(inPosToProReceiverReceiver.GetIpiReceiver());
@@ -56,5 +47,26 @@ public class Main : MonoBehaviour
         IProExportToPythonPptExporterSender proExportToPythonPptExporterSender = proExport;
         IProExportToPythonPptExporterReceiver proExportToPythonPptExporterReceiver = pythonPptExporter;
         proExportToPythonPptExporterSender.AddPpiReceiver(proExportToPythonPptExporterReceiver.GetPpiReceiver());
+        IInPdfToProImportSender inPdfToProImportSender = inPdf;
+        IInPdfToProImportReceiver inPdfToProImportReceiver = proImport;
+        inPdfToProImportSender.AddPdfReceiver(inPdfToProImportReceiver.GetPdfReceiver());
+        IInRawAnswerToProImportSender inRawAnswerToProImportSender = inRawAnswer;
+        IInRawAnswerToProImportReceiver inRawAnswerToProImportReceiver = proImport;
+        inRawAnswerToProImportSender.AddRawAnswerReceiver(inRawAnswerToProImportReceiver.GetRawAnswerReceiver());
+        IProImportToPythonPdfConverterSender proImportToPythonPdfConverterSender = proImport;
+        IProImportToPythonPdfConverterReceiver proImportToPythonPdfConverterReceiver = pythonPdfConverter;
+        proImportToPythonPdfConverterSender.AddPpiReceiver(proImportToPythonPdfConverterReceiver.GetPpiReceiver());
+        IPythonPdfConverterToProSendSender pythonPdfConverterToProSendSender = pythonPdfConverter;
+        IPythonPdfConverterToProSendReceiver pythonPdfConverterToProSendReceiver = proSend;
+        pythonPdfConverterToProSendSender.AddPprReceiver(pythonPdfConverterToProSendReceiver.GetPprReceiver());
+        IProSendToProReceiverSender proSendToProReceiverSender = proSend;
+        IProSendToProReceiverReceiver proSendToProReceiverReceiver = proReceiver;
+        proSendToProReceiverSender.AddPiReceiver(proSendToProReceiverReceiver.GetPiReceiver());
+        IPythonPptExporterToProDisplaySender pythonPptExporterToProDisplaySender = pythonPptExporter;
+        IPythonPptExporterToProDisplayReceiver pythonPptExporterToProDisplayReceiver = proDisplay;
+        pythonPptExporterToProDisplaySender.AddPptDirReceiver(pythonPptExporterToProDisplayReceiver.GetPptDirReceiver());
+        IProDisplayToOutDisplaySender proDisplayToOutDisplaySender = proDisplay;
+        IProDisplayToOutDisplayReceiver proDisplayToOutDisplayReceiver = outDisplay;
+        proDisplayToOutDisplaySender.AddDirReceiver(proDisplayToOutDisplayReceiver.GetDirReceiver());
     }
 }

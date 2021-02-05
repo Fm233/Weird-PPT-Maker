@@ -4,10 +4,10 @@ using System;
 using UnityEngine;
 public struct Pdf
 {
-    public string pdfLoc;
+    public string dir;
 
-    public Pdf(string pdfLoc)
+    public Pdf(string dir)
     {
-        this.pdfLoc = pdfLoc;
+        this.dir = dir;
     }
 }

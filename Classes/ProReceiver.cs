@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-public class ProReceiver : MonoBehaviour, IProImportToProReceiverReceiver, IInPosToProReceiverReceiver, IInRegionToProReceiverReceiver, IProReceiverToOutPosSender, IProReceiverToOutRegionSender, IProReceiverToOutImageSender, IProReceiverToProExportSender
+public class ProReceiver : MonoBehaviour, IInPosToProReceiverReceiver, IInRegionToProReceiverReceiver, IProReceiverToOutPosSender, IProReceiverToOutRegionSender, IProReceiverToOutImageSender, IProReceiverToProExportSender, IProSendToProReceiverReceiver
 {
     void Start()
     {
@@ -11,14 +11,6 @@ public class ProReceiver : MonoBehaviour, IProImportToProReceiverReceiver, IInPo
     void Update()
     {
         // Update here
-    }
-    public Action<ProInf> GetPiReceiver()
-    {
-        return ReceivePi;
-    }
-    public void ReceivePi(ProInf pi)
-    {
-        // Fill receiver function here
     }
     public Action<InPosInf> GetIpiReceiver()
     {
@@ -55,5 +47,13 @@ public class ProReceiver : MonoBehaviour, IProImportToProReceiverReceiver, IInPo
     public void AddPeiReceiver(Action<ProExportInf> action)
     {
         peiAction += action;
+    }
+    public Action<ProInf> GetPiReceiver()
+    {
+        return ReceivePi;
+    }
+    public void ReceivePi(ProInf pi)
+    {
+        // Fill receiver function here
     }
 }

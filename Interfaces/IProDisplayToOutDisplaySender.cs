@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-public interface IProImportToProReceiverReceiver
+public interface IProDisplayToOutDisplaySender
 {
-    Action<ProInf> GetPiReceiver();
+    void AddDirReceiver(Action<string> action);
 }

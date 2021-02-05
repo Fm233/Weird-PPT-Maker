@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-public class PythonPdfConverter : MonoBehaviour, IProImportToPythonPdfConverterReceiver
+public class PythonPdfConverter : MonoBehaviour, IProImportToPythonPdfConverterReceiver, IPythonPdfConverterToProSendSender
 {
     void Start()
     {
@@ -19,5 +19,10 @@ public class PythonPdfConverter : MonoBehaviour, IProImportToPythonPdfConverterR
     public void ReceivePpi(PythonPdfInf ppi)
     {
         // Fill receiver function here
+    }
+    Action<PythonPdfReturn> pprAction;
+    public void AddPprReceiver(Action<PythonPdfReturn> action)
+    {
+        pprAction += action;
     }
 }

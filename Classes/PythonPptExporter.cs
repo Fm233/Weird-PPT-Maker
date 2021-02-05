@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-public class PythonPptExporter : MonoBehaviour, IProExportToPythonPptExporterReceiver
+public class PythonPptExporter : MonoBehaviour, IProExportToPythonPptExporterReceiver, IPythonPptExporterToProDisplaySender
 {
     void Start()
     {
@@ -19,5 +19,10 @@ public class PythonPptExporter : MonoBehaviour, IProExportToPythonPptExporterRec
     public void ReceivePpi(PythonPptInf ppi)
     {
         // Fill receiver function here
+    }
+    Action<string> pptDirAction;
+    public void AddPptDirReceiver(Action<string> action)
+    {
+        pptDirAction += action;
     }
 }
